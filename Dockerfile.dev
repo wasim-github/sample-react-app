@@ -1,0 +1,17 @@
+# Specify a base image
+FROM node:16-alpine
+
+#define app working directory where node application file will copy
+WORKDIR /app
+
+#copy node app file system from local to container
+COPY package.json ./
+
+# Install some depenendencies
+
+RUN npm install
+
+COPY . .
+
+# Default command
+CMD ["npm", "run", "start"]
